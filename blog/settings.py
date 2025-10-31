@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', "django-insecure-!^i=kyi-d#0g+fk-671w7
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-ALLOWED_HOSTS = ['Blog-website.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['blog-website-iseu.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
