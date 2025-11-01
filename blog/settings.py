@@ -52,7 +52,7 @@ ROOT_URLCONF = "blog.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates', BASE_DIR / "static"],
+        "DIRS": [BASE_DIR / 'templates'],  # Remove the static directory from here
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -139,7 +139,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # WhiteNoise configuration for serving static files
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if os.environ.get('RENDER'):
+    WHITENOISE_MANIFEST_STRICT = False  # Don't fail on missing files
 
 # Media files (Uploaded by users)
 MEDIA_URL = '/media/'
@@ -167,3 +169,4 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+WHITENOISE_KEEP_ONLY_HASHED_FILES = False
