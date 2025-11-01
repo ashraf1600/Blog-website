@@ -99,13 +99,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# Static files storage - simplified for production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-
-# WhiteNoise configuration
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_ALLOW_ALL_ORIGINS = True
-WHITENOISE_SKIP_COMPRESS_EXTENSIONS = []
+# Use custom forgiving storage backend
+STATICFILES_STORAGE = 'blog.storage.ForgivingWhiteNoiseStorage'
 
 # Media files
 MEDIA_URL = '/media/'
@@ -134,3 +129,20 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# ```
+
+# ## Step 3: Verify Your File Structure
+
+# Make sure you have this structure:
+# ```
+# project/
+# ├── blog/
+# │   ├── __init__.py
+# │   ├── settings.py
+# │   ├── storage.py       ← NEW FILE
+# │   ├── urls.py
+# │   └── wsgi.py
+# ├── home/
+# ├── static/
+# ├── templates/
+# └── manage.py
