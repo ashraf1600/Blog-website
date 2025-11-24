@@ -85,3 +85,4 @@ def add_comment(request, slug):
         return redirect("blog_detail", slug=post.blog_slug)
     
     return redirect('index')
+

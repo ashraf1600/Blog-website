@@ -50,9 +50,9 @@
 						<img src="{{post.img.url}}" alt="{{post.title}}" />
 					</div>
 					
-					<!-- post content -->
+					<!-- post content - UPDATED FOR CKEDITOR -->
 					<div class="post-content clearfix">
-						<p>{{post.content}}</p>
+						{{post.content|safe}}  <!-- CHANGED THIS LINE -->
 					</div>
 					
 					<!-- post bottom section -->
@@ -161,7 +161,8 @@
 						<button type="button" onclick="cancelReply()" style="float:right; border:none; background:transparent; cursor:pointer;">✕</button>
 					</div>
 					
-					<form method="post" action="{% url 'add_comment' post.blog_slug %}">
+					<!-- UPDATED FORM ACTION -->
+					<form method="post">
 						<div class="messages"></div>
 						{% csrf_token %}
 						

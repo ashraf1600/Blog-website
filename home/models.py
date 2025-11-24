@@ -2,6 +2,7 @@ from django.db import models
 from autoslug import AutoSlugField
 from django.utils.text import slugify
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -37,7 +38,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100, default='Admin')
     img = models.ImageField(upload_to='Images')
-    content = models.TextField()
+    content = RichTextField()
     category = models.ForeignKey(
         Category, related_name='blogs', on_delete=models.CASCADE)
     blog_slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
@@ -66,7 +67,6 @@ class Comment(models.Model):
         'self', null=True, blank=True, on_delete=models.CASCADE, related_name='replies')
 
     def save(self, *args, **kwargs):
-        # Automatically set the blog_id when saving a comment
         if self.post:
             self.blog_id = self.post.id
         super().save(*args, **kwargs)
@@ -76,3 +76,7 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-date']
+
+
+
+
