@@ -974,7 +974,7 @@ pythonmanage.pycollectstatic
 
 -[Cloudinary Storage](https://github.com/cloudinary/pycloudinary)
 
--[Bootstrap Documentation](https://getbootstrap.com/)
+* [ ] -[Bootstrap Documentation](https://getbootstrap.com/)
 
 -[Font Awesome Icons](https://fontawesome.com/)
 
